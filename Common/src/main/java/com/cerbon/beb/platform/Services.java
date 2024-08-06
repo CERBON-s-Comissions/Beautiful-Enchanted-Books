@@ -1,6 +1,6 @@
-package com.cerbon.ml_template.platform;
+package com.cerbon.beb.platform;
 
-import com.cerbon.ml_template.util.ModConstants;
+import com.cerbon.beb.util.BEBConstants;
 
 import java.util.ServiceLoader;
 
@@ -10,7 +10,7 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        ModConstants.LOGGER.debug("Loaded {} for service {}", loadedService, clazz);
+        BEBConstants.LOGGER.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

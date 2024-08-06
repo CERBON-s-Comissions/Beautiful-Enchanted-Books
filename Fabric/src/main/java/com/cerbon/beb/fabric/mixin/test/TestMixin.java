@@ -1,6 +1,6 @@
-package com.cerbon.ml_template.fabric.mixin.test;
+package com.cerbon.beb.fabric.mixin.test;
 
-import com.cerbon.ml_template.util.ModConstants;
+import com.cerbon.beb.util.BEBConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.main.GameConfig;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,6 +14,6 @@ public abstract class TestMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void sendMessageIfWorking(GameConfig gameConfig, CallbackInfo ci) {
-        ModConstants.LOGGER.info("Fabric only mixins are working for {}!",  ModConstants.MOD_NAME);
+        BEBConstants.LOGGER.info("Fabric only mixins are working for {}!",  BEBConstants.MOD_NAME);
     }
 }

@@ -1,7 +1,7 @@
-package com.cerbon.ml_template.mixin.test;
+package com.cerbon.beb.mixin.test;
 
 import com.cerbon.cerbons_api.api.static_utilities.MiscUtils;
-import com.cerbon.ml_template.util.ModConstants;
+import com.cerbon.beb.util.BEBConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.main.GameConfig;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,6 +15,6 @@ public abstract class TestMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void sendMessageIfWorking(GameConfig gameConfig, CallbackInfo ci) {
-        ModConstants.LOGGER.info("Common mixins are working for {} on {}!",  ModConstants.MOD_NAME, MiscUtils.getPlatformName());
+        BEBConstants.LOGGER.info("Common mixins are working for {} on {}!",  BEBConstants.MOD_NAME, MiscUtils.getPlatformName());
     }
 }
