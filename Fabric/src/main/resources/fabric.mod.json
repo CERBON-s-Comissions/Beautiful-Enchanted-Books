@@ -17,9 +17,6 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.cerbon.beb.fabric.BeautifulEnchantedBooksFabric"
-    ],
     "client": [
       "com.cerbon.beb.fabric.BeautifulEnchantedBooksFabric"
     ]

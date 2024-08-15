@@ -6,6 +6,8 @@
   "mixins": [
   ],
   "client": [
+    "ItemRendererMixin",
+    "ModelManagerMixin",
     "test.TestMixin"
   ],
   "injectors": {
