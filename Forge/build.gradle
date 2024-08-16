@@ -40,6 +40,20 @@ dependencies {
 
     modImplementation "curse.maven:jade-324717:${jade_version_forge}"
 
+    // Compatibility Mods
+    modImplementation "curse.maven:alexs-mobs-426558:5160697"
+    modImplementation "curse.maven:alexs-caves-924854:5162617"
+//    modImplementation "curse.maven:create-328085:4835191"
+    modImplementation "curse.maven:farmers-delight-398521:5051242"
+    modImplementation "curse.maven:vampirism-become-a-vampire-233029:5526512"
+    modImplementation "curse.maven:vein-mining-431611:5481492"
+    modImplementation "curse.maven:ars-nouveau-401955:5600384"
+
+    modImplementation "curse.maven:citadel-331936:5559513"
+    modImplementation "curse.maven:curios-309927:5367944"
+    modImplementation "curse.maven:geckolib-388172:5460309"
+    modImplementation "curse.maven:spectrelib-993948:5217603"
+
     // All Projects Dependencies
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
     implementation(include("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}"))

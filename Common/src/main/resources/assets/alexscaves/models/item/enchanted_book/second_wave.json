@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:item/enchanted_book/sweeping_edge"
+    "layer0": "alexscaves:item/enchanted_book/second_wave"
   }
 }
