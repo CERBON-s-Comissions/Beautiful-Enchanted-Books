@@ -11,8 +11,8 @@ assignees: ''
 
 - [ ] **I have checked that the bug is not a duplicate or, if it is, it needs to be reopened**
 - [ ] **I have checked that I am running the latest version of Beautiful Enchanted Books Mod**
-- [ ] **I have checked the [FAQ](https://github.com/CERBON-MODS/Beautiful-Enchanted-Books/blob/master/FAQ.md) section for solutions**
-- [ ] **I have read the [contributing guidelines](https://github.com/CERBON-MODS/GITHUB_REPOSITORY_NAME/blob/master/CONTRIBUTING.md#issues) and I agree with the [Code of Conduct](https://github.com/CERBON-MODS/Beautiful-Enchanted-Books/blob/master/CODE_OF_CONDUCT.md)**
+- [ ] **I have checked the [FAQ](https://github.com/CERBON-s-Comissions/Beautiful-Enchanted-Books/blob/master/FAQ.md) section for solutions**
+- [ ] **I have read the [contributing guidelines](https://github.com/CERBON-s-Comissions/Beautiful-Enchanted-Books/blob/master/CONTRIBUTING.md#issues) and I agree with the [Code of Conduct](https://github.com/CERBON-s-Comissions/Beautiful-Enchanted-Books/blob/master/CODE_OF_CONDUCT.md)**
 
 ## Loader, loader version and minecraft version
 Please provide the loader, loader version and the Minecraft version on which you are running the mod. For example: `Forge 47.2.0, Minecraft 1.20.1`
