@@ -8,7 +8,7 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    forge()
+    neoForge()
 }
 
 configurations {
@@ -16,57 +16,38 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
+    developmentNeoForge.extendsFrom common
 }
 
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
-
-    forge {
-        mixinConfig "${mod_id}.mixins.json"
-        mixinConfig "${mod_id}-common.mixins.json"
-    }
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    neoForge "net.neoforged:neoforge:${neo_version}"
 
     // Mod Dependencies
-    modImplementation "com.cerbon:cerbons_api-forge-${minecraft_version}:${cerbons_api_version}"
+    //modImplementation "com.cerbon:cerbons_api-neoforge-${minecraft_version}:${cerbons_api_version}"
 
     // Useful Mods
-    modCompileOnlyApi "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
-    modRuntimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
+    modCompileOnlyApi "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    modRuntimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    modImplementation "curse.maven:jade-324717:${jade_version_forge}"
-
-    // Compatibility Mods
-    modImplementation "curse.maven:alexs-mobs-426558:5160697"
-    modImplementation "curse.maven:alexs-caves-924854:5162617"
-//    modImplementation "curse.maven:create-328085:4835191"
-    modImplementation "curse.maven:farmers-delight-398521:5051242"
-    modImplementation "curse.maven:vampirism-become-a-vampire-233029:5526512"
-    modImplementation "curse.maven:vein-mining-431611:5481492"
-    modImplementation "curse.maven:ars-nouveau-401955:5600384"
-
-    modImplementation "curse.maven:citadel-331936:5559513"
-    modImplementation "curse.maven:curios-309927:5367944"
-    modImplementation "curse.maven:geckolib-388172:5460309"
-    modImplementation "curse.maven:spectrelib-993948:5217603"
+    //modImplementation "curse.maven:jade-324717:${jade_version_forge}"
 
     // All Projects Dependencies
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
-    implementation(include("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}"))
+    implementation(include("io.github.llamalad7:mixinextras-neoforge:${mixin_extras_version}"))
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }
 
 processResources {
     var replaceProperties = [
             minecraft_version_range         : minecraft_version_range_forge,
-            forge_version_range             : forge_version_range,
-            loader_version_range            : loader_version_range,
+            neo_version_range               : neo_version_range,
+            neo_loader_version_range        : neo_loader_version_range,
             mod_id                          : mod_id,
             mod_name                        : mod_name,
             mod_license                     : mod_license,
@@ -80,13 +61,13 @@ processResources {
     ]
     inputs.properties replaceProperties
 
-    filesMatching(["META-INF/mods.toml", "pack.mcmeta"]) {
+    filesMatching(["META-INF/neoforge.mods.toml", "pack.mcmeta"]) {
         expand replaceProperties + [project: project]
     }
 }
 
 base {
-    archivesBaseName = archives_base_name + "-Forge-${minecraft_version}"
+    archivesBaseName = archives_base_name + "-NeoForge-${minecraft_version}"
 }
 
 shadowJar {
@@ -129,14 +110,14 @@ tasks.register("publishCurseForge", TaskPublishCurseForge) {
     apiToken = System.getenv("CURSEFORGE_TOKEN")
 
     def mainFile = upload(curseforge_project_id, remapJar)
-    mainFile.addModLoader("Forge")
+    mainFile.addModLoader("NeoForge")
     mainFile.addGameVersion(game_versions.replaceAll(" ", "").split(","))
 
     mainFile.releaseType = release_type
     mainFile.changelogType = changelog_type
     mainFile.changelog = rootProject.file(changelog).getText("UTF-8")
 
-    mainFile.addRequirement(required_dependencies_forge.replaceAll(" ", "").split(","))
+    mainFile.addRequirement(required_dependencies_neo.replaceAll(" ", "").split(","))
 }
 
 modrinth {
@@ -144,7 +125,7 @@ modrinth {
 
     projectId = modrinth_project_id
     uploadFile = remapJar
-    loaders = ["forge"]
+    loaders = ["neoforge"]
 
     gameVersions = game_versions.replaceAll(" ", "").split(",") as Iterable<? extends String>
 
@@ -155,7 +136,7 @@ modrinth {
     changelog = rootProject.file(project.changelog).getText('UTF-8')
 
     dependencies {
-        required.project required_dependencies_forge.replaceAll(" ", "").split(",")
+        required.project required_dependencies_neo.replaceAll(" ", "").split(",")
     }
 }
 

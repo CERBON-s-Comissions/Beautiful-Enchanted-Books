@@ -7,8 +7,7 @@
   ],
   "client": [
     "ItemRendererMixin",
-    "ModelManagerMixin",
-    "test.TestMixin"
+    "ModelManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

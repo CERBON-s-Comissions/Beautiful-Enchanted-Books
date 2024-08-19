@@ -1,12 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.cerbon.beb.forge.mixin",
+  "package": "com.cerbon.beb.neoforge.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
-    "test.TestMixin"
   ],
   "injectors": {
     "defaultRequire": 1
