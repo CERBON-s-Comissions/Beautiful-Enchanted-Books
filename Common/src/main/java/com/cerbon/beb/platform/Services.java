@@ -1,10 +1,12 @@
 package com.cerbon.beb.platform;
 
+import com.cerbon.beb.platform.services.IPlatformHelper;
 import com.cerbon.beb.util.BEBConstants;
 
 import java.util.ServiceLoader;
 
 public class Services {
+    public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
 
     public static <T> T load(Class<T> clazz) {
         final T loadedService = ServiceLoader.load(clazz)

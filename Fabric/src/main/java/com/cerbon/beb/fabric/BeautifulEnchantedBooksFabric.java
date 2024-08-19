@@ -26,7 +26,7 @@ public class BeautifulEnchantedBooksFabric implements ClientModInitializer, Prep
 
         for (ResourceLocation id : enchantIds) {
             ResourceLocation model = id.withPrefix(BeautifulEnchantedBooks.MODEL_PREFIX + "/");
-            BeautifulEnchantedBooks.registerModelFabric(id, model);
+            BeautifulEnchantedBooks.registerModel(id, new ModelResourceLocation(model, ""));
             pluginContext.addModels(model);
         }
     }

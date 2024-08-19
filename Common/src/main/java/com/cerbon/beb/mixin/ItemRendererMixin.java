@@ -1,6 +1,7 @@
 package com.cerbon.beb.mixin;
 
 import com.cerbon.beb.BeautifulEnchantedBooks;
+import com.cerbon.beb.util.MiscUtils;
 import com.cerbon.beb.util.mixin.IModelManagerMixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -34,9 +35,11 @@ public class ItemRendererMixin {
 
         String enchantId = enchants.entrySet().iterator().next().getKey().getRegisteredName();
 
-        BakedModel model = ((IModelManagerMixin) modelManager).getModel(BeautifulEnchantedBooks.ofVariantFabric(ResourceLocation.tryParse(enchantId)));
-        if (model == null)
-            model = modelManager.getModel(BeautifulEnchantedBooks.ofVariant(ResourceLocation.tryParse(enchantId)));
+        BakedModel model;
+        if (MiscUtils.getPlatformName().equals("Fabric"))
+            model = ((IModelManagerMixin) modelManager).getModel(BeautifulEnchantedBooks.ofVariantRl(ResourceLocation.tryParse(enchantId)));
+        else
+            model = modelManager.getModel(BeautifulEnchantedBooks.ofVariantMl(ResourceLocation.tryParse(enchantId)));
 
         return model != null ? model : original.call(instance, stack);
     }
