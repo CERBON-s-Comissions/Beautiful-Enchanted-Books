@@ -23,7 +23,7 @@ public class BEBClientEventsNeo {
 
         for (ResourceLocation id : enchantIds) {
             ResourceLocation model = id.withPrefix(BeautifulEnchantedBooks.MODEL_PREFIX + "/");
-            BeautifulEnchantedBooks.registerModel(id, model);
+            BeautifulEnchantedBooks.registerModel(id, ModelResourceLocation.standalone(model));
             event.register(ModelResourceLocation.standalone(model));
         }
     }

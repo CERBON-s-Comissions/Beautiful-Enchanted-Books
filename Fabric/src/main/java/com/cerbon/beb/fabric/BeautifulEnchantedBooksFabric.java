@@ -5,6 +5,7 @@ import com.cerbon.beb.util.BEBConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 
@@ -25,7 +26,7 @@ public class BeautifulEnchantedBooksFabric implements ClientModInitializer, Prep
 
         for (ResourceLocation id : enchantIds) {
             ResourceLocation model = id.withPrefix(BeautifulEnchantedBooks.MODEL_PREFIX + "/");
-            BeautifulEnchantedBooks.registerModel(id, model);
+            BeautifulEnchantedBooks.registerModelFabric(id, model);
             pluginContext.addModels(model);
         }
     }

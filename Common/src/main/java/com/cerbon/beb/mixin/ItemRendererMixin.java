@@ -33,7 +33,11 @@ public class ItemRendererMixin {
         final ModelManager modelManager = itemModelShaper.getModelManager();
 
         String enchantId = enchants.entrySet().iterator().next().getKey().getRegisteredName();
-        BakedModel model = ((IModelManagerMixin) modelManager).getModel(BeautifulEnchantedBooks.ofVariant(enchantId + "#standalone"));
+
+        BakedModel model = ((IModelManagerMixin) modelManager).getModel(BeautifulEnchantedBooks.ofVariantFabric(ResourceLocation.tryParse(enchantId)));
+        if (model == null)
+            model = modelManager.getModel(BeautifulEnchantedBooks.ofVariant(ResourceLocation.tryParse(enchantId)));
+
         return model != null ? model : original.call(instance, stack);
     }
 }
