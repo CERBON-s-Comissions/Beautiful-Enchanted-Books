@@ -16,24 +16,16 @@ public class BeautifulEnchantedBooks {
 	/**
 	 * Maps Enchantment id to the corresponding Model Id
 	 */
-	private static Map<ResourceLocation, ModelResourceLocation> REGISTERED_MODEL_IDS_ML;
-	private static Map<ResourceLocation, ResourceLocation> REGISTERED_MODEL_IDS_RL;
+	private static final Map<ResourceLocation, ModelResourceLocation> REGISTERED_MODEL_IDS_ML = new HashMap<>();
+	private static final Map<ResourceLocation, ResourceLocation> REGISTERED_MODEL_IDS_RL = new HashMap<>();
 
 	public static final String MODEL_PREFIX = "item/enchanted_book";
 
 	public static void registerModel(ResourceLocation enchantId, ModelResourceLocation model) {
-		if (MiscUtils.getPlatformName().equals("Fabric")) {
-			if (REGISTERED_MODEL_IDS_RL == null)
-				REGISTERED_MODEL_IDS_RL = new HashMap<>();
-
+		if (MiscUtils.getPlatformName().equals("Fabric"))
 			REGISTERED_MODEL_IDS_RL.put(enchantId, model.id());
-		}
-		else {
-			if (REGISTERED_MODEL_IDS_ML == null)
-				REGISTERED_MODEL_IDS_ML = new HashMap<>();
-
+		else
 			REGISTERED_MODEL_IDS_ML.put(enchantId, model);
-		}
 	}
 
 	public static ModelResourceLocation ofVariantMl(ResourceLocation variantId) {
