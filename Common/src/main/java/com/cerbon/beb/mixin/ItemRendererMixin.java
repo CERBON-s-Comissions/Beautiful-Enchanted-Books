@@ -36,7 +36,7 @@ public class ItemRendererMixin {
         final ModelManager modelManager = itemModelShaper.getModelManager();
 
         String enchantId = enchants.entrySet().iterator().next().getKey().getRegisteredName();
-        Minecraft.getInstance().player.displayClientMessage(Component.literal(enchantId), false);
+        //Minecraft.getInstance().player.displayClientMessage(Component.literal(enchantId), false);
 
         BakedModel model;
         if (MiscUtils.getPlatformName().equals("Fabric"))
