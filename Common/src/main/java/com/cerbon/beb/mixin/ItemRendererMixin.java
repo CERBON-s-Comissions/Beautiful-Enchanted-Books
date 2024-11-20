@@ -5,10 +5,12 @@ import com.cerbon.beb.util.MiscUtils;
 import com.cerbon.beb.util.mixin.IModelManagerMixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelShaper;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelManager;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -34,6 +36,7 @@ public class ItemRendererMixin {
         final ModelManager modelManager = itemModelShaper.getModelManager();
 
         String enchantId = enchants.entrySet().iterator().next().getKey().getRegisteredName();
+        Minecraft.getInstance().player.displayClientMessage(Component.literal(enchantId), false);
 
         BakedModel model;
         if (MiscUtils.getPlatformName().equals("Fabric"))

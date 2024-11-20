@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "evilcraft:item/enchanted_book/life_stealing"
+  }
+}

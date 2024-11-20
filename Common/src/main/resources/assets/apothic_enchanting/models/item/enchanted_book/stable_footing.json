@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "apothic_enchanting:item/enchanted_book/stable_footing"
+  }
+}
