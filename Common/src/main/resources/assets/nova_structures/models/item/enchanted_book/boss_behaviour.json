@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "nova_structures:item/enchanted_book/boss_behaviour"
+  }
+}

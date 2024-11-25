@@ -35,6 +35,8 @@ public class ItemRendererMixin {
         final ModelManager modelManager = itemModelShaper.getModelManager();
 
         ResourceLocation enchantId = ResourceLocation.tryParse(enchants.entrySet().iterator().next().getKey().getDescriptionId().replace("enchantment.", "").replace(".", ":"));
+//        Minecraft.getInstance().player.displayClientMessage(Component.literal(enchants.entrySet().iterator().next().getKey().getDescriptionId().replace("enchantment.", "").replace(".", ":")), false);
+
         BakedModel model = ((IModelManagerMixin) modelManager).getModel(BeautifulEnchantedBooks.ofVariant(enchantId));
         return model != null ? model : original.call(instance, stack);
     }
