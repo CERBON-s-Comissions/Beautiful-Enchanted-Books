@@ -37,7 +37,10 @@ public class ItemRendererMixin {
         ResourceLocation enchantId = ResourceLocation.tryParse(enchants.entrySet().iterator().next().getKey().getDescriptionId().replace("enchantment.", "").replace(".", ":"));
 //        Minecraft.getInstance().player.displayClientMessage(Component.literal(enchants.entrySet().iterator().next().getKey().getDescriptionId().replace("enchantment.", "").replace(".", ":")), false);
 
-        BakedModel model = ((IModelManagerMixin) modelManager).getModel(BeautifulEnchantedBooks.ofVariant(enchantId));
-        return model != null ? model : original.call(instance, stack);
+        ResourceLocation variant = BeautifulEnchantedBooks.ofVariant(enchantId);
+        if (variant == null) return original.call(instance, stack);
+
+        BakedModel model = ((IModelManagerMixin) modelManager).getModel(variant);
+        return model != null && model != modelManager.getMissingModel() ? model : original.call(instance, stack);
     }
 }
