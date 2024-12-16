@@ -28,6 +28,8 @@ dependencies {
 
     // Mod Dependencies
     //modImplementation "com.cerbon:cerbons_api-neoforge-${minecraft_version}:${cerbons_api_version}"
+    modImplementation "curse.maven:golden-foods-873866:5860711"
+    modImplementation "curse.maven:monolib-968432:5838463"
 
     // Useful Mods
     modCompileOnlyApi "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
