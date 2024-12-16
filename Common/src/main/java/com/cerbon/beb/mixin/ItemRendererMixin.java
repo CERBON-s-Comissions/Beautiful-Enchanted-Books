@@ -44,6 +44,6 @@ public class ItemRendererMixin {
         else
             model = modelManager.getModel(BeautifulEnchantedBooks.ofVariantMl(ResourceLocation.tryParse(enchantId)));
 
-        return model != null ? model : original.call(instance, stack);
+        return model != null && model != modelManager.getMissingModel() ? model : original.call(instance, stack);
     }
 }
