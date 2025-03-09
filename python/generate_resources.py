@@ -11,8 +11,9 @@ def generate_json_files():
     It identifies each folder inside to_generate as a mod ID
     For each mod ID folder, it:
 
-    Creates the required destination directories Copies the PNG textures to
-    Common/src/main/resources/assets/mod_id/textures/item/enchanted_book/ Generates JSON files with the proper structure at Common/src/main/resources/assets/mod_id/models/item/enchanted_book/
+    Creates the required destination directories
+    Copies the PNG textures to Common/src/main/resources/assets/mod_id/textures/item/enchanted_book/
+    Generates JSON files with the proper structure at Common/src/main/resources/assets/mod_id/models/item/enchanted_book/
     """
 
     # Base directory containing mod folders
