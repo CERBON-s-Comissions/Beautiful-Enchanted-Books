@@ -6,8 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ItemRendererMixin",
-    "ModelManagerMixin"
+    "ItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
