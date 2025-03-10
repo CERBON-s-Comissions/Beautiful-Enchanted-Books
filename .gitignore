@@ -12,6 +12,7 @@
 /Fabric/run/*
 !/Fabric/run/options.txt
 
+/Forge
 /Forge/.gradle/
 /Forge/build/
 /Forge/run/*
