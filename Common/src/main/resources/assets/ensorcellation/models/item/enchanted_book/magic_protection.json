@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ensorcellation:item/enchanted_book/magic_protection"
+  }
+}
