@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "miniutilities:item/enchanted_book/experience_harvester"
+  }
+}

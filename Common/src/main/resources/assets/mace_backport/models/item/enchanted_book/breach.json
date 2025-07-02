@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mace_backport:item/enchanted_book/breach"
+  }
+}
