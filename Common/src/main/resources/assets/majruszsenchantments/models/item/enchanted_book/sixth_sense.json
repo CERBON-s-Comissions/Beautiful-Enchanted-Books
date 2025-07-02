@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "majruszsenchantments:item/enchanted_book/sixth_sense"
+  }
+}
