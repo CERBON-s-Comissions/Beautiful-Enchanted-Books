@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.ItemModelShaper;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelManager;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -34,7 +35,7 @@ public class ItemRendererMixin {
 
         final ModelManager modelManager = itemModelShaper.getModelManager();
 
-        ResourceLocation enchantId = ResourceLocation.tryParse(enchants.entrySet().iterator().next().getKey().getDescriptionId().replace("enchantment.", "").replace(".", ":"));
+        ResourceLocation enchantId = BuiltInRegistries.ENCHANTMENT.getKey(enchants.entrySet().iterator().next().getKey());
 //        Minecraft.getInstance().player.displayClientMessage(Component.literal(enchants.entrySet().iterator().next().getKey().getDescriptionId().replace("enchantment.", "").replace(".", ":")), false);
 
         ResourceLocation variant = BeautifulEnchantedBooks.ofVariant(enchantId);

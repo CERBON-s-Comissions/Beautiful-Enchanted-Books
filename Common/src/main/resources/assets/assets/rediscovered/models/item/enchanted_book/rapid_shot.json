@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "rediscovered:item/enchanted_book/rapid_shot"
+  }
+}

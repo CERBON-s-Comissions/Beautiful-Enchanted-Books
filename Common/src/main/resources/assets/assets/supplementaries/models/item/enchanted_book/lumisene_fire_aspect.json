@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "supplementaries:item/enchanted_book/lumisene_fire_aspect"
+  }
+}

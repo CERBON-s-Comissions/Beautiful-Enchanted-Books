@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enchantments_plus:item/enchanted_book/oath_of_the_nose"
+  }
+}

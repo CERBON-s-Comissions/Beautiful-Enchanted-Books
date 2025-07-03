@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ad_astra_giselle_addon:item/enchanted_book/space_breathing"
+  }
+}
