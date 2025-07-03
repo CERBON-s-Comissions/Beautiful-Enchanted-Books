@@ -36,7 +36,7 @@ public class ItemRendererMixin {
         final ModelManager modelManager = itemModelShaper.getModelManager();
 
         ResourceLocation enchantId = BuiltInRegistries.ENCHANTMENT.getKey(enchants.entrySet().iterator().next().getKey());
-//        Minecraft.getInstance().player.displayClientMessage(Component.literal(enchants.entrySet().iterator().next().getKey().getDescriptionId().replace("enchantment.", "").replace(".", ":")), false);
+        //Minecraft.getInstance().player.displayClientMessage(Component.literal(enchantId.toString()), false);
 
         ResourceLocation variant = BeautifulEnchantedBooks.ofVariant(enchantId);
         if (variant == null) return original.call(instance, stack);
