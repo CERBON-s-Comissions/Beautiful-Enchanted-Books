@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "more_bows_and_arrows:item/enchanted_book/anti_gravity"
-  }
-}

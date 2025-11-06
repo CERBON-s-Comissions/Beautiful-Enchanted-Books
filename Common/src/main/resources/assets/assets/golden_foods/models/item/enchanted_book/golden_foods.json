@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "golden_foods:item/enchanted_book/golden_foods"
-  }
-}

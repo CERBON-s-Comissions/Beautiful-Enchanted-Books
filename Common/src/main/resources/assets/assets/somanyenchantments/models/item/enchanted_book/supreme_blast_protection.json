@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "somanyenchantments:item/enchanted_book/supreme_blast_protection"
-  }
-}

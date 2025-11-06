@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "yomaistyle:item/enchanted_book/destructive_smash"
+  }
+}

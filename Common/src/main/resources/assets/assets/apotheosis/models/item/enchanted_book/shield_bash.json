@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "apotheosis:item/enchanted_book/shield_bash"
-  }
-}

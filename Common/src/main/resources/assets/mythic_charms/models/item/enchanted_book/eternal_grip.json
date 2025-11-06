@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mythic_charms:item/enchanted_book/eternal_grip"
+  }
+}

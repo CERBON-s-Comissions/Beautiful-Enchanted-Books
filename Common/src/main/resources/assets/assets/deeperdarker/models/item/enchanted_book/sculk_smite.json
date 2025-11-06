@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "deeperdarker:item/enchanted_book/sculk_smite"
-  }
-}

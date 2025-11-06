@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "naturesaura:item/enchanted_book/aura_mending"
-  }
-}
