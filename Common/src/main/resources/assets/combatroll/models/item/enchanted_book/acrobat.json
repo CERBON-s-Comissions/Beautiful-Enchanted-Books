@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "combatroll:item/enchanted_book/acrobat"
+  }
+}

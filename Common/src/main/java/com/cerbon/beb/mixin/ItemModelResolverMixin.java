@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.item.MissingItemModel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ItemModelResolverMixin {
 
     @Inject(method = "appendItemLayers", at = @At(value = "INVOKE", target = "Ljava/util/function/Function;apply(Ljava/lang/Object;)Ljava/lang/Object;"), cancellable = true)
-    private void appendItemLayers(ItemStackRenderState renderState, ItemStack stack, ItemDisplayContext displayContext, Level level, LivingEntity entity, int seed, CallbackInfo ci) {
+    private void appendItemLayers(ItemStackRenderState renderState, ItemStack stack, ItemDisplayContext displayContext, Level level, ItemOwner owner, int seed, CallbackInfo ci) {
         ItemEnchantments enchants = EnchantmentHelper.getEnchantmentsForCrafting(stack);
 
         if (!stack.is(Items.ENCHANTED_BOOK) || enchants.isEmpty()) return;
@@ -34,7 +34,7 @@ public class ItemModelResolverMixin {
         ItemModel itemModel = Services.PLATFORM.getItemModel(ResourceLocation.tryParse(enchantId), Minecraft.getInstance().getModelManager());
 
         if (itemModel != null && !(itemModel instanceof MissingItemModel)) {
-            itemModel.update(renderState, stack, (ItemModelResolver) (Object) this, displayContext, level instanceof ClientLevel clientLevel ? clientLevel : null, entity, seed);
+            itemModel.update(renderState, stack, (ItemModelResolver) (Object) this, displayContext, level instanceof ClientLevel clientLevel ? clientLevel : null, owner, seed);
             ci.cancel();
         }
     }

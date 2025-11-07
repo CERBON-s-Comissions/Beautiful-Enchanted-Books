@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "trials:item/enchanted_book/wind_burst"
+  }
+}

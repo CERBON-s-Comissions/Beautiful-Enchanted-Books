@@ -36,12 +36,12 @@ dependencies {
 
     //modImplementation "curse.maven:jade-324717:${jade_version_fabric}"
 
-    modCompileOnly("com.terraformersmc:modmenu:${modmenu_version_fabric}") {
-        exclude module: "fabric-api"
-    }
-    modRuntimeOnly("com.terraformersmc:modmenu:${modmenu_version_fabric}") {
-        exclude module: "fabric-api"
-    }
+//    modCompileOnly("com.terraformersmc:modmenu:${modmenu_version_fabric}") {
+//        exclude module: "fabric-api"
+//    }
+//    modRuntimeOnly("com.terraformersmc:modmenu:${modmenu_version_fabric}") {
+//        exclude module: "fabric-api"
+//    }
 
     // All Projects Dependencies
     modApi "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cardinal_components_version}" // Even though Cardinal Components is shipped with Cerbons API it needs to exist here too or Fabric will complain.

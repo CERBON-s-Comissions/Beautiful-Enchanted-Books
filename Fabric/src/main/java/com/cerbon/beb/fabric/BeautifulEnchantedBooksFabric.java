@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.ModelRenderProperties;
 import net.minecraft.client.resources.model.BlockModelRotation;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.PreparableReloadListener;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +52,7 @@ public class BeautifulEnchantedBooksFabric implements ClientModInitializer, Prep
     }
 
     @Override
-    public CompletableFuture<Set<ResourceLocation>> load(ResourceManager manager, Executor executor) {
-        return CompletableFuture.supplyAsync(()-> BeautifulEnchantedBooks.findCITs(manager), executor);
+    public CompletableFuture<Set<ResourceLocation>> load(PreparableReloadListener.SharedState resourceReloaderStore, Executor executor) {
+        return CompletableFuture.supplyAsync(()-> BeautifulEnchantedBooks.findCITs(resourceReloaderStore.resourceManager()), executor);
     }
 }

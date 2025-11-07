@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arphex:item/enchanted_book/wither_aura0"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "create_sa:item/enchanted_book/above_the_clouds"
+  }
+}
