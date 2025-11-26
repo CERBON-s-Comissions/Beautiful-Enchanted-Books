@@ -13,5 +13,7 @@ public interface IPlatformHelper {
      */
     String getPlatformName();
 
+    boolean isModLoaded(String modId);
+
     ItemModel getItemModel(ResourceLocation enchantId, ModelManager modelManager);
 }
