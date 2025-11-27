@@ -14,5 +14,7 @@ public interface IPlatformHelper {
      */
     String getPlatformName();
 
+    boolean isModLoaded(String modId);
+
     BakedModel getModel(ResourceLocation fabricVariantId, ModelResourceLocation neoForgeVariantId, ModelManager modelManager);
 }

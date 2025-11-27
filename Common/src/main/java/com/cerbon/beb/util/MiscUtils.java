@@ -12,4 +12,8 @@ public class MiscUtils {
     public static String getPlatformName() {
         return Services.PLATFORM.getPlatformName();
     }
+
+    public static boolean isModLoaded(String modId) {
+        return Services.PLATFORM.isModLoaded(modId);
+    }
 }
