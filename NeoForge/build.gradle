@@ -1,8 +1,6 @@
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
-
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-    id 'net.darkhax.curseforgegradle' version '1.1.18'
+    id "com.gradleup.shadow" version "9.+"
+    id 'net.darkhax.curseforgegradle' version '1.+'
     id "com.modrinth.minotaur" version "2.+"
 }
 
@@ -12,11 +10,21 @@ architectury {
 }
 
 configurations {
-    common
-    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
     developmentNeoForge.extendsFrom common
+
+    // Files in this configuration will be bundled into your mod using the Shadow plugin.
+    // Don't use the `shadow` configuration from the plugin itself as it's meant for excluding files.
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
 }
 
 loom {
@@ -41,8 +49,8 @@ dependencies {
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
     implementation(include("io.github.llamalad7:mixinextras-neoforge:${mixin_extras_version}"))
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
+    common(project(path: ":common")) { transitive false }
+    shadowBundle(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }
 
 processResources {
@@ -69,23 +77,18 @@ processResources {
 }
 
 base {
-    archivesBaseName = archives_base_name + "-NeoForge-${minecraft_version}"
+    archivesName = archives_base_name + "-NeoForge-${minecraft_version}"
 }
 
 shadowJar {
     exclude "fabric.mod.json"
     exclude "architectury.common.json"
 
-    configurations = [project.configurations.shadowCommon]
-    archiveClassifier.set("dev-shadow")
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier.set("")
 }
 
-remapJar {
-    inputFile.set shadowJar.archiveFile
-    dependsOn shadowJar
-    archiveClassifier.set(null)
-    atAccessWideners.add("${mod_id}.accesswidener")
-}
+tasks.build.dependsOn shadowJar
 
 jar {
     archiveClassifier.set("dev")
@@ -103,55 +106,41 @@ components.java {
     }
 }
 
-tasks.register("publishCurseForgeAndModrinth", Task) {
-    dependsOn publishCurseForge
-    dependsOn tasks.modrinth
-}
-
-tasks.register("publishCurseForge", TaskPublishCurseForge) {
-    apiToken = System.getenv("CURSEFORGE_TOKEN")
-
-    def mainFile = upload(curseforge_project_id, remapJar)
-    mainFile.addModLoader("NeoForge")
-    mainFile.addGameVersion(game_versions.replaceAll(" ", "").split(","))
-
-    mainFile.releaseType = release_type
-    mainFile.changelogType = changelog_type
-    mainFile.changelog = rootProject.file(changelog).getText("UTF-8")
-
-    mainFile.addRequirement(required_dependencies_neo.replaceAll(" ", "").split(","))
-}
-
-modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
-
-    projectId = modrinth_project_id
-    uploadFile = remapJar
-    loaders = ["neoforge"]
-
-    gameVersions = game_versions.replaceAll(" ", "").split(",") as Iterable<? extends String>
-
-    versionName = archivesBaseName + "-" + mod_version
-    versionNumber = mod_version
-    versionType = release_type
-
-    changelog = rootProject.file(project.changelog).getText('UTF-8')
-
-    dependencies {
-        required.project required_dependencies_neo.replaceAll(" ", "").split(",")
-    }
-}
-
-publishing {
-    publications {
-        mavenForge(MavenPublication) {
-            artifactId = archives_base_name + "-" + project.name
-            from components.java
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-
-    }
-}
+//tasks.register("publishCurseForgeAndModrinth", Task) {
+//    dependsOn publishCurseForge
+//    dependsOn tasks.modrinth
+//}
+//
+//tasks.register("publishCurseForge", TaskPublishCurseForge) {
+//    apiToken = System.getenv("CURSEFORGE_TOKEN")
+//
+//    def mainFile = upload(curseforge_project_id, jar)
+//    mainFile.addModLoader("NeoForge")
+//    mainFile.addGameVersion(game_versions.replaceAll(" ", "").split(","))
+//
+//    mainFile.releaseType = release_type
+//    mainFile.changelogType = changelog_type
+//    mainFile.changelog = rootProject.file(changelog).getText("UTF-8")
+//
+//    mainFile.addRequirement(required_dependencies_neo.replaceAll(" ", "").split(","))
+//}
+//
+//modrinth {
+//    token = System.getenv("MODRINTH_TOKEN")
+//
+//    projectId = modrinth_project_id
+//    uploadFile = jar
+//    loaders = ["neoforge"]
+//
+//    gameVersions = game_versions.replaceAll(" ", "").split(",") as Iterable<? extends String>
+//
+//    versionName = archivesName + "-" + mod_version
+//    versionNumber = mod_version
+//    versionType = release_type
+//
+//    changelog = rootProject.file(project.changelog).getText('UTF-8')
+//
+//    dependencies {
+//        required.project required_dependencies_neo.replaceAll(" ", "").split(",")
+//    }
+//}

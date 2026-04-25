@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.item.MissingItemModel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -46,7 +46,7 @@ public class ItemModelResolverMixin {
             Map.entry("stellarity:_technical/prismatic_pearl_return", "stellarity:prismatic_pearl_return")
     );
 
-    @Inject(method = "appendItemLayers", at = @At(value = "INVOKE", target = "Ljava/util/function/Function;apply(Ljava/lang/Object;)Ljava/lang/Object;"), cancellable = true)
+    @Inject(method = "appendItemLayers", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/item/ItemModelResolver;getItemModel(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/client/renderer/item/ItemModel;"), cancellable = true)
     private void appendItemLayers(ItemStackRenderState renderState, ItemStack stack, ItemDisplayContext displayContext, Level level, ItemOwner owner, int seed, CallbackInfo ci) {
         ItemEnchantments enchants = EnchantmentHelper.getEnchantmentsForCrafting(stack);
 
@@ -54,7 +54,7 @@ public class ItemModelResolverMixin {
 
         String enchantId = enchants.entrySet().iterator().next().getKey().getRegisteredName();
         //Minecraft.getInstance().player.displayClientMessage(Component.literal(enchantId.toString()), false);
-        ItemModel itemModel = Services.PLATFORM.getItemModel(ResourceLocation.tryParse(MiscUtils.isModLoaded("stellarity") && enchantId.startsWith("stellarity:_technical/") ? STELLARITY_MODELS.getOrDefault(enchantId, "") : enchantId), Minecraft.getInstance().getModelManager());
+        ItemModel itemModel = Services.PLATFORM.getItemModel(Identifier.tryParse(MiscUtils.isModLoaded("stellarity") && enchantId.startsWith("stellarity:_technical/") ? STELLARITY_MODELS.getOrDefault(enchantId, "") : enchantId), Minecraft.getInstance().getModelManager());
 
         if (itemModel != null && !(itemModel instanceof MissingItemModel)) {
             itemModel.update(renderState, stack, (ItemModelResolver) (Object) this, displayContext, level instanceof ClientLevel clientLevel ? clientLevel : null, owner, seed);

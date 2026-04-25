@@ -5,7 +5,7 @@ import com.cerbon.beb.platform.services.IPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class FabricPlatformHelper implements IPlatformHelper {
 
@@ -20,7 +20,7 @@ public class FabricPlatformHelper implements IPlatformHelper {
     }
 
     @Override
-    public ItemModel getItemModel(ResourceLocation enchantId, ModelManager modelManager) {
+    public ItemModel getItemModel(Identifier enchantId, ModelManager modelManager) {
         return modelManager.getModel(BeautifulEnchantedBooksFabric.REGISTERED_MODELS.get(enchantId));
     }
 }

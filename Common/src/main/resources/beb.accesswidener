@@ -1,7 +1,8 @@
-accessWidener   v2  named
+accessWidener   v2  official
 
 # Classes
 
 # Methods
+accessible method net/minecraft/client/renderer/item/CuboidItemModelWrapper <init> (Ljava/util/List;Lnet/minecraft/client/resources/model/geometry/QuadCollection;Lnet/minecraft/client/renderer/item/ModelRenderProperties;Lorg/joml/Matrix4fc;)V
 
 # Fields
