@@ -19,3 +19,9 @@ base {
 loom {
     accessWidenerPath = file("src/main/resources/${mod_id}.accesswidener")
 }
+
+sourcesJar {
+    exclude "architectury.common.json"
+}
+
+tasks.build.dependsOn shadowJar

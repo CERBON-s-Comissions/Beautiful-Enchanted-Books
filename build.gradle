@@ -1,6 +1,7 @@
 plugins {
     id "architectury-plugin" version "3.5-SNAPSHOT"
     id "dev.architectury.loom-no-remap" version "1.14-SNAPSHOT" apply false
+    id "com.gradleup.shadow" version "9+"
 }
 
 architectury {
@@ -9,6 +10,7 @@ architectury {
 
 subprojects {
     apply plugin: "dev.architectury.loom-no-remap"
+    apply plugin: "com.gradleup.shadow"
 
     dependencies {
         minecraft "com.mojang:minecraft:${minecraft_version}"
