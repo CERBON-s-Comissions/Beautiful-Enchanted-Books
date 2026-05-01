@@ -1,6 +1,7 @@
 package com.cerbon.beb.fabric;
 
 import com.cerbon.beb.BeautifulEnchantedBooks;
+import com.cerbon.beb.fabric.mixin.ICuboidItemModelWrapper;
 import com.cerbon.beb.util.BEBConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.model.loading.v1.ExtraModelKey;
@@ -8,7 +9,6 @@ import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.model.loading.v1.SimpleUnbakedExtraModel;
 import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
-import net.minecraft.client.renderer.item.CuboidItemModelWrapper;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.ModelRenderProperties;
 import net.minecraft.client.resources.model.geometry.QuadCollection;
@@ -47,7 +47,7 @@ public class BeautifulEnchantedBooksFabric implements ClientModInitializer, Prep
                 TextureSlots textureSlots = resolvedModel.getTopTextureSlots();
                 QuadCollection list = resolvedModel.bakeTopGeometry(textureSlots, modelBaker, BlockModelRotation.IDENTITY);
                 ModelRenderProperties modelRenderProperties = ModelRenderProperties.fromResolvedModel(modelBaker, resolvedModel, textureSlots);
-                return new CuboidItemModelWrapper(List.of(), list, modelRenderProperties, new Matrix4f());
+                return ICuboidItemModelWrapper.invokeConstructor(List.of(), list, modelRenderProperties, new Matrix4f());
             }));
         }
     }
